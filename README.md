@@ -19,19 +19,18 @@ Este projeto resolve esse problema utilizando uma LLM para analisar o conteúdo 
 * **Reclassificação Inteligente:** Atribui prioridade e urgência com base na análise semântica do conteúdo do chamado.
 * **Padronização de Títulos:** Cria títulos novos, claros e objetivos para os chamados.
 * **Correção Automática:** Corrige pequenos erros de digitação nos títulos originais para melhor compreensão.
-* **Geração de SQL:** O output final é um arquivo `.sql` com comandos `UPDATE` prontos para uso, garantindo integração fácil com o banco de dados do GLPI.
 * **Alta Customização:** Toda a inteligência e as regras de negócio residem em um único prompt no arquivo `.env`, permitindo uma personalização completa sem alterar o código.
 
 ## ⚙️ Como Funciona
 
 O fluxo de trabalho do projeto é simples e direto:
 
-1.  **Exportação:** Você exporta os chamados desejados do GLPI para um arquivo CSV.
+1.  **Obtem Chamados em Aberto:** Usando API REST do GLPI.
 2.  **Análise:** O script Python lê cada linha do CSV.
 3.  **Consulta à LLM:** Para cada chamado, o script envia o conteúdo para uma LLM (como Ollama, OpenAI, etc.) usando o prompt de análise definido no arquivo `.env`.
 4.  **Recebimento do JSON:** A LLM retorna uma análise estruturada em formato JSON com o novo título, prioridade, urgência e categoria.
-5.  **Geração do SQL:** O script processa o JSON e monta um comando `UPDATE` em SQL para aquele chamado.
-6.  **Execução:** Ao final, você terá um arquivo `.sql` que pode ser revisado e executado no seu banco de dados GLPI.
+5.  **Execução:** Ao final, ele atualiza usando a API Rest
+
 
 ## 🛠️ Pré-requisitos
 
